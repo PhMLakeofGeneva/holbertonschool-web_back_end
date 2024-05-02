@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
-""" Mongo documents module.
+""" Mongo topic searched module.
 """
 
 
-def list_all(mongo_collection):
-    """ Method that lists all documents in a collection.
+def schools_by_topic(mongo_collection, topic):
+    """ Method that returns the list of school having a specific topic.
         Arg:
             mongo_collection: pymongo collection object.
+            topic: Topic searched.
         Return:
-            An empty list if no document in the collection.
+            A list.
     """
-    return mongo_collection.find()
+    return mongo_collection.find({"topics": {"$in": [topic]}})
